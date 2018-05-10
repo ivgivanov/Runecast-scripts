@@ -1,0 +1,56 @@
+<com.vmware.vshield.vsm.dashboard.dto.custom.LabelValueConfigurationDto> 
+ <resourceType>LabelValueConfiguration</resourceType>
+ <displayName>Custom widget: demo</displayName> 
+ <categoryDisplayName>Custom widget</categoryDisplayName> 
+ <shared>true</shared> 
+ <revision>0</revision>
+ <datasources> 
+     <com.vmware.vshield.vsm.dashboard.dto.custom.DatasourceDto> 
+         <urls> 
+             <com.vmware.vshield.vsm.dashboard.dto.custom.UrlAliasDto> 
+                 <alias>globalInfo</alias> 
+                 <url>/api/1.0/appliance-management/summary/system</url> 
+             </com.vmware.vshield.vsm.dashboard.dto.custom.UrlAliasDto> 
+			 <com.vmware.vshield.vsm.dashboard.dto.custom.UrlAliasDto> 
+                 <alias>sshStatus</alias> 
+                 <url>/api/1.0/appliance-management/components/component/ssh</url> 
+             </com.vmware.vshield.vsm.dashboard.dto.custom.UrlAliasDto> 
+         </urls> 
+         <displayName>default</displayName> 
+     </com.vmware.vshield.vsm.dashboard.dto.custom.DatasourceDto> 
+ </datasources> 
+ <properties> 
+     <com.vmware.vshield.vsm.dashboard.dto.custom.PropertyItemDto> 
+         <field>#{default.globalInfo.versionInfo.majorVersion}+'.'+#{default.globalInfo.versionInfo.minorVersion}+'.'+#{default.globalInfo.versionInfo.patchVersion}</field>
+         <label> 
+             <text>NSX version</text> 
+         </label>
+		 <type>String</type>
+     </com.vmware.vshield.vsm.dashboard.dto.custom.PropertyItemDto>  
+     <com.vmware.vshield.vsm.dashboard.dto.custom.PropertyItemDto> 
+         <field>#{default.globalInfo.versionInfo.buildNumber}</field>
+         <label> 
+             <text>NSX build number</text> 
+         </label>
+		 <type>String</type>
+     </com.vmware.vshield.vsm.dashboard.dto.custom.PropertyItemDto>
+	 <com.vmware.vshield.vsm.dashboard.dto.custom.PropertyItemDto> 
+         <field>#{default.sshStatus.status}</field>
+	<renderConfiguration>
+		<com.vmware.vshield.vsm.dashboard.dto.custom.RenderConfigurationDto>
+			<displayValue>#{default.sshStatus.status}</displayValue>
+			<condition>#{default.sshStatus.status} == 'RUNNING'</condition>
+			<icons>
+				<com.vmware.vshield.vsm.dashboard.dto.custom.IconDto>
+					<type>WARNING</type>
+				</com.vmware.vshield.vsm.dashboard.dto.custom.IconDto>
+			</icons>
+		</com.vmware.vshield.vsm.dashboard.dto.custom.RenderConfigurationDto>
+	</renderConfiguration>
+         <label> 
+             <text>NSX Manager SSH status</text> 
+         </label>
+		 <type>String</type>
+     </com.vmware.vshield.vsm.dashboard.dto.custom.PropertyItemDto>  
+ </properties> 
+</com.vmware.vshield.vsm.dashboard.dto.custom.LabelValueConfigurationDto>
